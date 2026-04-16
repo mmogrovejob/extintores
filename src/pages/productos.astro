@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const productos = [
+  {
+    id: 1,
+    nombre: "Extintor de Polvo Químico Seco (PQS) 6kg",
+    descripcion: "Ideal para fuegos tipo ABC (sólidos, líquidos y eléctricos). Cilindro de acero de alta resistencia.",
+    precio: "$35.00",
+    imagen: "https://images.unsplash.com/photo-1621213451551-fa602a637a77?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 2,
+    nombre: "Extintor de Gas Carbónico (CO2) 10lbs",
+    descripcion: "Especial para fuegos clase BC, no deja residuos y es seguro para equipos electrónicos sensibles.",
+    precio: "$85.00",
+    imagen: "https://images.unsplash.com/photo-1595188839077-d0dcf8ab8414?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 3,
+    nombre: "Extintor de Polvo Químico Seco (PQS) 9kg",
+    descripcion: "Alta capacidad para industrias y grandes comercios. Rápida extinción de incendios.",
+    precio: "$45.00",
+    imagen: "https://images.unsplash.com/photo-1582216091350-019b88ef574c?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 4,
+    nombre: "Extintor de Agua Presurizada 2.5 Galones",
+    descripcion: "Apropiado únicamente para fuegos clase A (madera, papel, tela). Altamente efectivo con materiales.",
+    precio: "$42.00",
+    imagen: "https://images.unsplash.com/photo-1621213451551-fa602a637a77?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 5,
+    nombre: "Extintor Acetato de Potasio (Clase K) 6L",
+    descripcion: "Fabricado especialmente para cocinas comerciales, aceites y grasas vegetales/animales.",
+    precio: "$110.00",
+    imagen: "https://images.unsplash.com/photo-1621213451551-fa602a637a77?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 6,
+    nombre: "Gabinete Metálico contra Incendios",
+    descripcion: "Gabinete empotrable para protección de los equipos, con puerta de vidrio e incluye llave temporal.",
+    precio: "$60.00",
+    imagen: "https://images.unsplash.com/photo-1541888040718-2e0618ffec7d?auto=format&fit=crop&q=80&w=800"
+  }
+];
+---
+
+<Layout>
+  <Nav />
+  
+  <main class="pt-32 pb-24 bg-gray-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header de la página -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Nuestro <span class="text-red-600">Catálogo</span></h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Equipos contra incendio de la más alta calidad y certificados, listos para proteger tu empresa y hogar.</p>
+      </div>
+
+      <!-- Grid de Productos -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {productos.map((producto) => (
+          <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group flex flex-col border border-gray-100">
+            <!-- Imagen contenedor -->
+            <div class="relative h-64 overflow-hidden bg-gray-100">
+              <img 
+                src={producto.imagen} 
+                alt={producto.nombre} 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-gray-900 shadow-sm">
+                En Stock
+              </div>
+            </div>
+            
+            <!-- Contenido -->
+            <div class="p-8 flex flex-col flex-grow">
+              <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">{producto.nombre}</h3>
+              <p class="text-gray-600 text-sm mb-6 flex-grow">{producto.descripcion}</p>
+              
+              <div class="flex items-end justify-between mt-auto pt-4 border-t border-gray-50">
+                <div>
+                  <span class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1">Precio Unitario</span>
+                  <span class="text-3xl font-black text-red-600">{producto.precio}</span>
+                </div>
+                
+                <a href="/#contacto" class="inline-flex items-center justify-center p-4 bg-gray-900 text-white rounded-2xl hover:bg-red-600 hover:shadow-lg transition-all duration-300 group-hover:rotate-12" title="Solicitar Cotización">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
